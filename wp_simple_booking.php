@@ -17,11 +17,9 @@
 function rdc_wsb_enqueue_dependencies() {
     global $post;
 
-    // wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/5.4.0/css/font-awesome.min.css');
     wp_enqueue_style( 'rdc_wsb_style', plugin_dir_url( __FILE__ ) . 'public/css/simple_booking_style.css');
     
     if( get_field('license_code', $post->ID) ){
-        // wp_register_script( 'rdc_wsb_scripts', plugin_dir_url( __FILE__ ) . 'public/js/init_simplebooking.js', array( 'jquery' ), false, true);
         wp_register_script( 'rdc_wsb_scripts', plugin_dir_url( __FILE__ ) . 'public/js/simplebooking.js', array( 'jquery' ), false, true);
 
         $options = get_option( 'rdc_wsb_options' );
@@ -39,12 +37,8 @@ function rdc_wsb_enqueue_dependencies() {
 
         update_option( 'rdc_wsb_options', $options );
 
-        // echo serialize(get_option( 'rdc_wsb_options' ));
-
         wp_localize_script( 'rdc_wsb_scripts', 'options', $options );
-        // wp_localize_script( 'rdc_wsb_scripts-2', 'options', $options );
         wp_enqueue_script( 'rdc_wsb_scripts' );
-        // wp_enqueue_script( 'rdc_wsb_scripts-2' );
     }  
 }
 add_action( 'wp_enqueue_scripts', 'rdc_wsb_enqueue_dependencies');
@@ -67,7 +61,7 @@ function my_acf_settings_url( $url ) {
 add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
 function my_acf_settings_show_admin( $show_admin ) {
     // TODO: rimettere a true appena finito di sviluppare.
-    return true;
+    return false;
 }
 
 if( class_exists('acf') ) {
