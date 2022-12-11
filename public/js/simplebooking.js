@@ -23,7 +23,7 @@ $j(document).ready(function () {
     window,
     document,
     "script",
-    "https://cdn.simplebooking.it/search-box-script.axd?IDA=" + options.codice,
+    "https://cdn.simplebooking.it/search-box-script.axd?IDA=" + options.license_code,
     "SBSyncroBox"
   );
 
