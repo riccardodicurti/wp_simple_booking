@@ -1,1 +1,1 @@
-# wp_simple_booking
+# WordPress Simple Booking
