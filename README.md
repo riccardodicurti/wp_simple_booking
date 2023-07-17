@@ -1,5 +1,7 @@
 # WordPress Simple Booking
 
-- Per far funzionare il sisteam mettere i settings nel pannello del backend
-- Se disponibile WPML questo sovrascrive la lingua impostata nel pannello del backend in base alla lingua della pagina
-- Se ACF è attivo in ogni pagina è possibile impostare un codice o lingua diversa in ogni pagina
+WordPress Simple Booking is a plugin to simply add Simple Booking bar to your WordPress site
+
+- To make the plugin work put the simple booking id in the option page;
+- If WPML is active overrides the language set in the option page based on the language of the page;
+- If ACF is active on each page you can set a different code or language on each page;
