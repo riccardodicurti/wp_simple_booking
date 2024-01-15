@@ -1,3 +1,9 @@
+
+/* save the footer */
+body {
+    margin-bottom: 89px;
+}
+
 #sb-button {
     display: none;
 
