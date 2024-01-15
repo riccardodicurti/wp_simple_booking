@@ -25,12 +25,18 @@ $j(document).ready(function () {
         "SBSyncroBox"
     );
 
+    var colorPalette = JSON.parse( options.js_bar_settings );
+
     SBSyncroBox({
         CodLang: options.language_code,
-        Styles: JSON.parse( options.js_bar_settings ),
+        Styles: colorPalette,
     });
 
-    document.getElementById("sb-button").onclick = function () {
+    var button = document.getElementById("sb-button");
+
+    button.style.setProperty( '--sb-primary', colorPalette.CustomButtonBGColor );
+
+    button.onclick = function () {
         var class_sb = document.getElementsByClassName("sb");
         class_sb[0].classList.add("sb-screen-xs");
         var id_sb_button = document.getElementById("sb-button");
