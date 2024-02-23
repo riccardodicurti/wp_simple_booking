@@ -131,7 +131,7 @@ class WordPressSimpleBooking {
 	}
 
 	public function default_language_code_2_callback() {
-		$placeholder = 'it_IT';
+		$placeholder = 'IT';
 
 		printf(
 			'<input class="regular-text" type="text" name="wordpress_simple_booking_option_name[default_language_code_2]" id="default_language_code_2" value="%s">',
