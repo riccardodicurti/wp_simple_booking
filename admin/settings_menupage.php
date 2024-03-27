@@ -144,7 +144,7 @@ class WordPressSimpleBooking {
         $placeholder = <<<EOT
         {
             "CustomColor": "#676767",
-            "CustomColorHover": '#676767',
+            "CustomColorHover": "#676767",
             "CustomLabelColor": "#676767",
             "CustomWidgetColor": "#676767",
             "CustomWidgetElementHoverColor": "#676767",
