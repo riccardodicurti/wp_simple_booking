@@ -14,7 +14,7 @@ class WordPressSimpleBooking {
 	public function wordpress_simple_booking_add_plugin_page() {
 		add_menu_page(
 			'WordPress Simple Booking', // page_title
-			'WordPress Simple Booking', // menu_title
+			'Simple Booking', // menu_title
 			'manage_options', // capability
 			'wordpress-simple-booking', // menu_slug
 			[ $this, 'wordpress_simple_booking_create_admin_page' ], // function
@@ -141,7 +141,7 @@ class WordPressSimpleBooking {
 
 	public function js_bar_settings_callback() {
 
-        $placeholder = <<<EOT
+        $default = <<<EOT
         {
             "CustomColor": "#676767",
             "CustomColorHover": "#676767",
@@ -169,9 +169,11 @@ class WordPressSimpleBooking {
         }
         EOT;
 
+		$js_bar_settings = isset( $this->wordpress_simple_booking_options['js_bar_settings'] ) ? esc_attr( $this->wordpress_simple_booking_options['js_bar_settings'] ) : $default; 
+
 		printf(
 			'<textarea class="regular-text" type="text" name="wordpress_simple_booking_option_name[js_bar_settings]" id="js_bar_settings" rows="4" cols="50">%s</textarea>',
-			isset( $this->wordpress_simple_booking_options['js_bar_settings'] ) ? esc_attr( $this->wordpress_simple_booking_options['js_bar_settings'] ) : $placeholder
+			$js_bar_settings ?: $default
 		);
 	}
 }
