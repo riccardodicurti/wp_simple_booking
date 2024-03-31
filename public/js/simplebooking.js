@@ -60,6 +60,5 @@ $j(document).ready(function () {
             '<div class="sb-button__theme_2" id="sb-button"><a href="' + options.richiedi_url + '" class="sb-button-div"> ' + options.richiedi_label + ' </a><a href="' + options.prenota_url + '" class="sb-button-div"> ' + options.prenota_label + ' </a></div>'
         );
     }
-
 });
   

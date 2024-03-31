@@ -26,6 +26,14 @@ function rdc_wsb_acf_init() {
 	}
 }
 
+function rdc_wsb_get_sburl_by_license_code( $license_code, $language ) {
+	return "https://www.simplebooking.it/ibe/search?hid={$license_code}&lang={$language}&cur=#";
+}
+
+function rdc_wsb_get_richiediurl_by_license_code( $page_id, $language ) {
+	return apply_filters( 'wpml_permalink', get_the_permalink( $page_id ), strtolower( $language ) );
+}
+
 function rdc_wsb_get_dependencies() {
 	global $post;
 	$options = [];
@@ -37,11 +45,6 @@ function rdc_wsb_get_dependencies() {
 	$options['availability_locale'] = $wordpress_simple_booking_options['default_availability_locale_1'];
 	$options['language_code'] = $wordpress_simple_booking_options['default_language_code_2'];
 	$options['js_bar_settings'] = $wordpress_simple_booking_options['js_bar_settings'];
-
-	$options['prenota_url'] = __( '/prenota', 'rdc_wsb' ); 
-	$options['richiedi_url'] = __( '/richiedi', 'rdc_wsb' ); 
-	$options['prenota_label'] = __( 'Prenota', 'rdc_wsb' ); 
-	$options['richiedi_label'] = __( 'Richiedi', 'rdc_wsb' ); 
 
 	if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
 		$options['language_code'] = strtoupper( defined( 'ICL_LANGUAGE_CODE' ) );
@@ -55,6 +58,11 @@ function rdc_wsb_get_dependencies() {
 		$options['license_code']  = get_field( 'license_code', $post->ID ) ?: $options['license_code'];
 		$options['language_code'] = strtoupper( get_field( 'language_code', $post->ID ) ) ?: $options['language_code'];
 	}
+
+	$options['prenota_url'] = rdc_wsb_get_sburl_by_license_code( $wordpress_simple_booking_options['default_license_code_0'], $options['language_code'] ); 
+	$options['richiedi_url'] = rdc_wsb_get_richiediurl_by_license_code( $wordpress_simple_booking_options['request_page_id'], $options['language_code'] ); 
+	$options['prenota_label'] = __( 'Prenota', 'rdc_wsb' ); 
+	$options['richiedi_label'] = __( 'Richiedi', 'rdc_wsb' );
 
 	return $options;
 }
