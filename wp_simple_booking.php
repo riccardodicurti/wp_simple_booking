@@ -32,10 +32,16 @@ function rdc_wsb_get_dependencies() {
 
 	$wordpress_simple_booking_options = get_option( 'wordpress_simple_booking_option_name' );
 
-	$options['license_code']        = $wordpress_simple_booking_options['default_license_code_0'];
+	$options['mobile_theme_version'] = $wordpress_simple_booking_options['mobile_theme_version'];
+	$options['license_code'] = $wordpress_simple_booking_options['default_license_code_0'];
 	$options['availability_locale'] = $wordpress_simple_booking_options['default_availability_locale_1'];
-	$options['language_code']       = $wordpress_simple_booking_options['default_language_code_2'];
-	$options['js_bar_settings']     = $wordpress_simple_booking_options['js_bar_settings'];
+	$options['language_code'] = $wordpress_simple_booking_options['default_language_code_2'];
+	$options['js_bar_settings'] = $wordpress_simple_booking_options['js_bar_settings'];
+
+	$options['prenota_url'] = __( '/prenota', 'rdc_wsb' ); 
+	$options['richiedi_url'] = __( '/richiedi', 'rdc_wsb' ); 
+	$options['prenota_label'] = __( 'Prenota', 'rdc_wsb' ); 
+	$options['richiedi_label'] = __( 'Richiedi', 'rdc_wsb' ); 
 
 	if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
 		$options['language_code'] = strtoupper( defined( 'ICL_LANGUAGE_CODE' ) );
@@ -81,7 +87,7 @@ function rdc_wsb_init() {
 		require_once 'admin/settings_menupage.php';
 	} else {
 		require_once 'public/shortcodes/bar_shortcode.php';
-		require_once 'public/shortcodes/request_shortcode.php';
+		require_once 'public/shortcodes/form_shortcode.php';
 	}
 
 	if ( ! is_plugin_active( 'advanced-custom-fields/acf.php' ) ) {
@@ -93,4 +99,4 @@ function rdc_wsb_init() {
 	}
 }
 
-add_action( 'init', 'rdc_wsb_init' )
+add_action( 'init', 'rdc_wsb_init' );

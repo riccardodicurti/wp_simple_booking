@@ -4,6 +4,8 @@ function create_wsb_form( $atts ) {
     $options = rdc_wsb_get_dependencies();
     $options = shortcode_atts( $options, $atts );
 
+    $options['form_name'] = $options['form_name'] ?? 'RichiestaPreventivoDaSitoWeb';
+    $options['thank_you_page'] = $options['thank_you_page'] ?? '#';
     $options['js_bar_settings'] = json_encode( json_decode( $options['js_bar_settings'] ), JSON_UNESCAPED_UNICODE );
 
     ob_start();
@@ -20,12 +22,12 @@ function create_wsb_form( $atts ) {
         echo 'SBSyncroBox({';
             echo "CodLang: '{$options['language_code']}',";
             echo 'Reference: "sbSyncroBox",';
-            echo "MainContainerId: 'sb-container-s',";
+            echo "MainContainerId: 'sb-converto-container-s',";
             echo "Styles: {$options['js_bar_settings']},";
             echo "Converto: {";
                 echo 'InPageContainerId: "sb-converto-container-s",';
-                echo 'ThankYouPage: "#",';
-                echo 'FormName: "RichiestaPreventivoDaSitoWeb"';
+                echo "ThankYouPage: '{$options['thank_you_page']}',";
+                echo "FormName: '{$options['form_name']}'";
             echo "}";
         echo '});';
     echo '</script>';

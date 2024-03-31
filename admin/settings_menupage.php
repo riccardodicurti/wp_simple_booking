@@ -56,6 +56,22 @@ class WordPressSimpleBooking {
 		);
 
 		add_settings_field(
+			'mobile_theme_version',
+			'Mobile theme version',
+			[ $this, 'mobile_theme_version_callback' ],
+			'wordpress-simple-booking-admin',
+			'wordpress_simple_booking_setting_section'
+		);
+
+		add_settings_field(
+			'request_page_id',
+			'Request page id',
+			[ $this, 'request_page_id_callback' ],
+			'wordpress-simple-booking-admin',
+			'wordpress_simple_booking_setting_section'
+		);
+
+		add_settings_field(
 			'default_license_code_0', // id
 			'Default license code', // title
 			[ $this, 'default_license_code_0_callback' ], // callback
@@ -90,6 +106,15 @@ class WordPressSimpleBooking {
 
 	public function wordpress_simple_booking_sanitize( $input ) {
 		$sanitary_values = [];
+
+		if ( isset( $input['mobile_theme_version'] ) ) {
+			$sanitary_values['mobile_theme_version'] = sanitize_text_field( $input['mobile_theme_version'] );
+		}
+
+		if ( isset( $input['request_page_id'] ) ) {
+			$sanitary_values['request_page_id'] = sanitize_text_field( $input['request_page_id'] );
+		}
+
 		if ( isset( $input['default_license_code_0'] ) ) {
 			$sanitary_values['default_license_code_0'] = sanitize_text_field( $input['default_license_code_0'] );
 		}
@@ -112,12 +137,37 @@ class WordPressSimpleBooking {
 	public function wordpress_simple_booking_section_info() {
 	}
 
+	public function mobile_theme_version_callback() {;
+		$options = [
+			'0' => __( 'default version', 'rdc_wsb' ),
+			'1' => __( 'deactivate', 'rdc_wsb' ),
+			'2' => __( 'buttons version', 'rdc_wsb' ),
+		];
+
+		$placeholder = isset( $this->wordpress_simple_booking_options['mobile_theme_version'] ) ? esc_attr( $this->wordpress_simple_booking_options['mobile_theme_version'] ) : '0';
+
+		echo "<select name='wordpress_simple_booking_option_name[mobile_theme_version]' id='mobile_theme_version'>";
+			foreach( $options as $key => $value ) {
+				echo '<option value="' . $key  . '" ' . ( $key == $placeholder ? 'selected' : '' ) . '>' . $value . '</option>';
+			}
+		echo '</select>';
+	}	
+
 	public function default_license_code_0_callback() {
 		$placeholder = '0000';
 
 		printf(
 			'<input class="regular-text" type="text" name="wordpress_simple_booking_option_name[default_license_code_0]" id="default_license_code_0" value="%s">',
 			isset( $this->wordpress_simple_booking_options['default_license_code_0'] ) ? esc_attr( $this->wordpress_simple_booking_options['default_license_code_0'] ) : $placeholder
+		);
+	}
+
+	public function request_page_id_callback() {
+		$placeholder = '0';
+
+		printf(
+			'<input class="regular-text" type="text" name="wordpress_simple_booking_option_name[request_page_id]" id="request_page_id" value="%s">',
+			isset( $this->wordpress_simple_booking_options['request_page_id'] ) ? esc_attr( $this->wordpress_simple_booking_options['request_page_id'] ) : $placeholder
 		);
 	}
 
@@ -141,7 +191,7 @@ class WordPressSimpleBooking {
 
 	public function js_bar_settings_callback() {
 
-        $default = <<<EOT
+        $placeholder = <<<EOT
         {
             "CustomColor": "#676767",
             "CustomColorHover": "#676767",
@@ -169,11 +219,11 @@ class WordPressSimpleBooking {
         }
         EOT;
 
-		$js_bar_settings = isset( $this->wordpress_simple_booking_options['js_bar_settings'] ) ? esc_attr( $this->wordpress_simple_booking_options['js_bar_settings'] ) : $default; 
+		$js_bar_settings = isset( $this->wordpress_simple_booking_options['js_bar_settings'] ) ? esc_attr( $this->wordpress_simple_booking_options['js_bar_settings'] ) : $placeholder; 
 
 		printf(
 			'<textarea class="regular-text" type="text" name="wordpress_simple_booking_option_name[js_bar_settings]" id="js_bar_settings" rows="4" cols="50">%s</textarea>',
-			$js_bar_settings ?: $default
+			$js_bar_settings ?: $placeholder
 		);
 	}
 }

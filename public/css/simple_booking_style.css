@@ -222,3 +222,18 @@ body {
         display: none !important;
     }
 }
+
+/* Version 2 */
+
+#sb-button.sb-button__theme_2 {
+    display: flex;
+}
+
+.sb-button__theme_2 a.sb-button-div:first-child {
+    border-right: 1px solid rgba(256, 256, 256, 0.4);
+}
+.sb-button__theme_2 a.sb-button-div {
+    width: 50%;
+    line-height: 44px;
+    color: rgba(256, 256, 256, 1);
+}
