@@ -6,8 +6,7 @@ function create_wsb_form( $atts ) {
 
     $options['form_name'] = $options['form_name'] ?? 'RichiestaPreventivoDaSitoWeb';
     $options['thank_you_page'] = $options['thank_you_page'] ?? '#';
-    $options['js_bar_settings'] = json_encode( json_decode( $options['js_bar_settings'] ), JSON_UNESCAPED_UNICODE );
-
+    $options['js_bar_settings'] = json_decode( json_encode( $options['js_bar_settings'] ) );
     ob_start();
     
     echo '<div id="sb-converto-container-s"></div>';

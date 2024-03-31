@@ -192,32 +192,31 @@ class WordPressSimpleBooking {
 	public function js_bar_settings_callback() {
 
         $placeholder = <<<EOT
-        {
-            "CustomColor": "#676767",
-            "CustomColorHover": "#676767",
-            "CustomLabelColor": "#676767",
-            "CustomWidgetColor": "#676767",
-            "CustomWidgetElementHoverColor": "#676767",
-            "CustomWidgetElementHoverBGColor": "#676767",
-            "CustomBoxShadowColor": "#ffffff",
-            "CustomBoxShadowColorHover": "#ffffff",
-            "CustomIntentSelectionColor": "#9f8b3e",
-            "CustomIntentSelectionDaysBGColor": "#9f8b3e",
-            "CustomButtonHoverBGColor": "#676767",
-            "CustomLabelHoverColor": "#9f8b3e",
-            "CustomButtonBGColor": "#9f8b3e",
-            "CustomIconColor": "#9f8b3e",
-            "CustomLinkColor": "#9f8b3e",
-            "CustomBoxShadowColorFocus": "#9f8b3e",
-            "CustomAddRoomBoxShadowColor": "#9f8b3e",
-            "CustomAccentColor": "#9f8b3e",
-            "CustomBGColor": "#e0e0e0",
-            "CustomFieldBackgroundColor": "#ffffff",
-            "CustomWidgetBGColor": "#ffffff",
-            "CustomSelectedDaysColor": "#676767",
-            "CustomCalendarBackgroundColor": "#ffffff"
-        }
-        EOT;
+		{
+			"Theme": "",
+			"CustomColor": "#676767",
+			"CustomLabelColor": "#676767",
+			"CustomWidgetColor": "#676767",
+			"CustomWidgetElementHoverColor": "#676767",
+			"CustomWidgetElementHoverBGColor": "#676767",
+			"CustomBoxShadowColor": "#676767",
+			"CustomBoxShadowColorHover": "#676767",
+			"CustomIntentSelectionColor": "#676767",
+			"CustomIntentSelectionDaysBGColor": "#676767",
+			"CustomLabelHoverColor": "#9f8b3e",
+			"CustomButtonBGColor": "#9f8b3e",
+			"CustomIconColor": "#9f8b3e",
+			"CustomLinkColor": "#9f8b3e",
+			"CustomBoxShadowColorFocus": "#9f8b3e",
+			"CustomAddRoomBoxShadowColor": "#9f8b3e",
+			"CustomAccentColor": "#9f8b3e",
+			"CustomBGColor": "#ffffff",
+			"CustomFieldBackgroundColor": "#ffffff", 
+			"CustomWidgetBGColor": "#ffffff",
+			"CustomSelectedDaysColor": "#ffffff",
+			"CustomCalendarBackgroundColor": "#ffffff",
+		}
+		EOT;
 
 		$js_bar_settings = isset( $this->wordpress_simple_booking_options['js_bar_settings'] ) ? esc_attr( $this->wordpress_simple_booking_options['js_bar_settings'] ) : $placeholder; 
 
