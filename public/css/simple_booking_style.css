@@ -225,15 +225,27 @@ body {
 
 /* Version 2 */
 
-#sb-button.sb-button__theme_2 {
-    display: flex;
+.sb-button__theme_2 .sb-buttons {
+    display: none;
 }
 
-.sb-button__theme_2 a.sb-button-div:first-child {
-    border-right: 1px solid rgba(256, 256, 256, 0.4);
+.sb-button__theme_2 .sb-button-div {
+    display: none;
 }
-.sb-button__theme_2 a.sb-button-div {
-    width: 50%;
-    line-height: 44px;
-    color: rgba(256, 256, 256, 1);
+
+@media only screen and (max-width: 1000px) {
+    .sb-button__theme_2 .sb-buttons {
+        display: flex;
+    }
+
+    .sb-button__theme_2 .sb-buttons a {
+        width: 50%;
+        text-align: center;
+        line-height: 44px;
+        color: rgba(256, 256, 256, 1);
+    }
+
+    .sb-button__theme_2 .sb-buttons a:first-child {
+        border-right: 1px solid rgba(256, 256, 256, 0.4);
+    }
 }
