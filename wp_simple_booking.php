@@ -70,7 +70,7 @@ function rdc_wsb_get_dependencies() {
 function rdc_wsb_enqueue_dependencies() {
 	$options = rdc_wsb_get_dependencies();
 
-	if ( $options['license_code'] ) {
+	if ( $options['license_code'] != '0000' ) {
 		wp_enqueue_style( 'rdc_wsb_style', plugin_dir_url( __FILE__ ) . 'public/css/simple_booking_style.css' );
 		wp_register_script( 'rdc_wsb_scripts', plugin_dir_url( __FILE__ ) . 'public/js/simplebooking.js', [ 'jquery' ], false, true );
 
