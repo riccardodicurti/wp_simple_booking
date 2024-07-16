@@ -217,7 +217,7 @@ class WordPressSimpleBooking {
             "CustomSelectedDaysColor": "#676767",
             "CustomCalendarBackgroundColor": "#ffffff"
         }
-        EOT;
+EOT;
 
 		$js_bar_settings = isset( $this->wordpress_simple_booking_options['js_bar_settings'] ) ? esc_attr( $this->wordpress_simple_booking_options['js_bar_settings'] ) : $placeholder; 
 
