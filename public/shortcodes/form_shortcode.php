@@ -6,7 +6,7 @@ function create_wsb_form( $atts = [], $content = null, $tag = '' ) {
 	$atts = array_change_key_case( (array) $atts, CASE_LOWER );
 	
     $options = rdc_wsb_get_dependencies();
-	$options['thank_you_page'] = '/thank-you-page/';
+	$options['thank_you_page'] = __('/thank-you-page/', 'rdc_wsb' );
 
     $options = shortcode_atts( $options, $atts, $tag );
 	
