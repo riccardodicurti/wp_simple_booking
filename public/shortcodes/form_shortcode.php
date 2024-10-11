@@ -1,13 +1,19 @@
 <?php
 
-function create_wsb_form( $atts ) {
+function create_wsb_form( $atts = [], $content = null, $tag = '' ) {
+	
+	// normalize attribute keys, lowercase
+	$atts = array_change_key_case( (array) $atts, CASE_LOWER );
+	
     $options = rdc_wsb_get_dependencies();
-    $options = shortcode_atts( $options, $atts );
+	$options['thank_you_page'] = '/thank-you-page/';
+
+    $options = shortcode_atts( $options, $atts, $tag );
+	
+	// echo '<!-- data: ' . json_encode( $options['thank_you_page'] ) . '-->'; 
 
     $options['form_name'] = $options['form_name'] ?? 'RichiestaPreventivoDaSitoWeb';
-    $options['thank_you_page'] = $options['thank_you_page'] ?? '#';
-    $options['js_bar_settings'] = json_encode( json_decode( $options['js_bar_settings'] ), JSON_UNESCAPED_UNICODE );
-
+    $options['js_bar_settings'] = json_decode( json_encode( $options['js_bar_settings'] ) );
     ob_start();
     
     echo '<div id="sb-converto-container-s"></div>';
