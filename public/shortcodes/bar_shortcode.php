@@ -1,8 +1,11 @@
 <?php
 
-function create_wsb_bar( $atts ) {
-    $options = rdc_wsb_get_dependencies();
-    $options = shortcode_atts( $options, $atts );
+function create_wp_sb_bar( $atts = [], $content = null, $tag = '' ) {
+    $atts = array_change_key_case( (array) $atts, CASE_LOWER );
+
+    $options = wp_sb_get_dependencies();
+    
+    $options = shortcode_atts( $options, $atts, $tag );
 
     $options['js_bar_settings'] = json_encode( json_decode( $options['js_bar_settings'] ), JSON_UNESCAPED_UNICODE );
 
@@ -31,4 +34,4 @@ function create_wsb_bar( $atts ) {
     return $output;
 }
 
-add_shortcode('wsb_bar', 'create_wsb_bar');
+add_shortcode('wsb_bar', 'create_wp_sb_bar');

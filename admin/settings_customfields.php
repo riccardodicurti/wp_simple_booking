@@ -10,14 +10,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 
 	acf_add_local_field_group( [
 		'key'                   => 'group_5e71ee9724ba0',
-		'title'                 => __( 'WORDPRESS SIMPLE BOOKING', 'rdc_wsb' ),
+		'title'                 => __( 'WORDPRESS SIMPLE BOOKING', 'wp_sb' ),
 		'fields'                => [
 			[
 				'key'               => 'field_5e71eefae37da',
-				'label'             => __( 'license code', 'rdc_wsb' ),
+				'label'             => __( 'license code', 'wp_sb' ),
 				'name'              => 'license_code',
 				'type'              => 'number',
-				'instructions'      => __( 'Enter the correct code for the simple booking license', 'rdc_wsb' ),
+				'instructions'      => __( 'Enter the correct code for the simple booking license', 'wp_sb' ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => [
@@ -35,10 +35,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 			],
 			[
 				'key'               => 'field_5e71ef43e37db',
-				'label'             => __( 'language code', 'rdc_wsb' ),
+				'label'             => __( 'language code', 'wp_sb' ),
 				'name'              => 'language_code',
 				'type'              => 'text',
-				'instructions'      => __( 'Enter the correct language code of this page', 'rdc_wsb' ),
+				'instructions'      => __( 'Enter the correct language code of this page', 'wp_sb' ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => [

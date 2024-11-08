@@ -6,7 +6,6 @@ body {
 
 #sb-button {
     display: none;
-
     --sb-primary: #877542;
     --sb-secondary: #000000;
 }
