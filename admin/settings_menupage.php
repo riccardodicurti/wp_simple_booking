@@ -27,7 +27,7 @@ class WordPressSimpleBooking {
 		$this->wordpress_simple_booking_options = get_option( 'wordpress_simple_booking_option_name' ); ?>
 
         <div class="wrap">
-            <h2><?php __( 'WORDPRESS SIMPLE BOOKING', 'wp_sb' ); ?></h2>
+            <h2><?php __( 'WORDPRESS SIMPLE BOOKING', 'wp_simple_booking' ); ?></h2>
             <p></p>
 			<?php settings_errors(); ?>
 
@@ -139,16 +139,16 @@ class WordPressSimpleBooking {
 
 	public function mobile_theme_version_callback() {;
 		$options = [
-			'0' => __( 'default version', 'wp_sb' ),
-			'1' => __( 'deactivate', 'wp_sb' ),
-			'2' => __( 'buttons version', 'wp_sb' ),
+			'0' => __( 'default version', 'wp_simple_booking' ),
+			'1' => __( 'deactivate', 'wp_simple_booking' ),
+			'2' => __( 'buttons version', 'wp_simple_booking' ),
 		];
 
 		$placeholder = isset( $this->wordpress_simple_booking_options['mobile_theme_version'] ) ? esc_attr( $this->wordpress_simple_booking_options['mobile_theme_version'] ) : '0';
 
 		echo "<select name='wordpress_simple_booking_option_name[mobile_theme_version]' id='mobile_theme_version'>";
 			foreach( $options as $key => $value ) {
-				echo '<option value="' . $key  . '" ' . ( $key == $placeholder ? 'selected' : '' ) . '>' . $value . '</option>';
+				echo '<option value="' . esc_attr( $key )  . '" ' . ( $key == $placeholder ? 'selected' : '' ) . '>' . esc_html( $value ) . '</option>';
 			}
 		echo '</select>';
 	}	

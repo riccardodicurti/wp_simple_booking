@@ -1,16 +1,16 @@
 <?php
 
-function create_wp_sb_form( $atts = [], $content = null, $tag = '' ) {
+function create_wp_simple_booking_form( $atts = [], $content = null, $tag = '' ) {
 	$atts = array_change_key_case( (array) $atts, CASE_LOWER );
 	
-    $options = wp_sb_get_dependencies();
-	$options['thank_you_page'] = __('/thank-you-page/', 'wp_sb' );
+    $options = wp_simple_booking_get_dependencies();
+	$options['thank_you_page'] = __('/thank-you-page/', 'wp_simple_booking' );
 
     $options = shortcode_atts( $options, $atts, $tag );
 
     $options['form_name'] = $options['form_name'] ?? 'RichiestaPreventivoDaSitoWeb';
     $options['js_bar_settings'] = json_encode( json_decode( $options['js_bar_settings'] ), JSON_UNESCAPED_UNICODE );
-    
+
     ob_start();
     
     echo '<div id="sb-converto-container-s"></div>';
@@ -42,4 +42,4 @@ function create_wp_sb_form( $atts = [], $content = null, $tag = '' ) {
     return $output;
 }
 
-add_shortcode('wsb_form', 'create_wp_sb_form');
+add_shortcode('wsb_form', 'create_wp_simple_booking_form');

@@ -1,9 +1,9 @@
 <?php
 
-function create_wp_sb_bar( $atts = [], $content = null, $tag = '' ) {
+function create_wp_simple_booking_bar( $atts = [], $content = null, $tag = '' ) {
     $atts = array_change_key_case( (array) $atts, CASE_LOWER );
 
-    $options = wp_sb_get_dependencies();
+    $options = wp_simple_booking_get_dependencies();
     
     $options = shortcode_atts( $options, $atts, $tag );
 
@@ -34,4 +34,4 @@ function create_wp_sb_bar( $atts = [], $content = null, $tag = '' ) {
     return $output;
 }
 
-add_shortcode('wsb_bar', 'create_wp_sb_bar');
+add_shortcode('wsb_bar', 'create_wp_simple_booking_bar');
