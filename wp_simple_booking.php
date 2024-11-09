@@ -68,9 +68,10 @@ function wp_simple_booking_get_dependencies() {
 
 function wp_simple_booking_enqueue_dependencies() {
 	$options = wp_simple_booking_get_dependencies();
+	$plugin_data = get_plugin_data(  __FILE__ ); 
 
 	if ( $options['license_code'] != '0000' ) {
-		wp_enqueue_style( 'wp_simple_booking_style', plugin_dir_url( __FILE__ ) . 'public/css/simple_booking_style.css' );
+		wp_enqueue_style( 'wp_simple_booking_style', plugin_dir_url( __FILE__ ) . 'public/css/simple_booking_style.css', [] , $plugin_data['Version'] );
 		wp_register_script( 'wp_simple_booking_scripts', plugin_dir_url( __FILE__ ) . 'public/js/simplebooking.js', [ 'jquery' ], false, true );
 
 		wp_localize_script( 'wp_simple_booking_scripts', 'options', $options );
