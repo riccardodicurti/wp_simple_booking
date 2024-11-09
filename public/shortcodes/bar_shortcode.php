@@ -23,7 +23,7 @@ function create_wp_simple_booking_bar( $atts = [], $content = null, $tag = '' ) 
         echo 'SBSyncroBox({';
             echo "CodLang: '" . esc_attr( $options['language_code'] ) . "',";
             echo "MainContainerId: 'sb-container-s',";
-            echo "Styles: " . json_encode( $options['js_bar_settings'], JSON_UNESCAPED_UNICODE ) . ",";
+            echo "Styles: " . wp_json_encode( $options['js_bar_settings'], JSON_UNESCAPED_UNICODE ) . ",";
         echo '});';
     echo '</script>';
 

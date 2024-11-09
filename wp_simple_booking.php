@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin Name:       WordPress Simple Booking
+ * Plugin Name:       Simple Booking
  * Plugin URI:        https://github.com/riccardodicurti/wp_simple_booking
- * Description:       WordPress Simple Booking is a plugin to simply add Simple Booking bar to your WordPress site
+ * Description:       Simple Booking is a plugin to simply add Simple Booking bar to your WordPress site
  * Version:           1.4
  * Author:            Riccardo Di Curti
  * Author URI:        https://riccardodicurti.it/
@@ -81,10 +81,10 @@ function wp_simple_booking_enqueue_dependencies() {
 function wp_simple_booking_admin_error_notice() {
 	global $pagenow;
 
-	if ( $pagenow == 'admin.php' && isset( $_GET['page'] ) && htmlspecialchars( $_GET['page'] ) == 'wordpress-simple-booking' ) {
+	if ( $pagenow == 'admin.php' && isset( $_GET['page'] ) && htmlspecialchars( wp_unslash( $_GET['page'] ) ) == 'wordpress-simple-booking' ) {
 		$install_acf_url = get_site_url( null, '/wp-admin/plugin-install.php?s=Advanced%2520Custom%2520Fields&tab=search&type=term' );
 		// translators: placeholder contain the acf plugin url
-		printf( '<div class="notice error my-acf-notice is-dismissible"><p>' . __( 'Unlock more "WordPress Simple Booking" features installing <a href="%s">Advanced Custom Fields</a>', 'wp_simple_booking' ) . '.</p></div>', $install_acf_url );
+		printf( '<div class="notice error my-acf-notice is-dismissible"><p>' . __( 'Unlock more "WordPress Simple Booking" features installing <a href="%s">Advanced Custom Fields</a>', 'wp_simple_booking' ) . '.</p></div>', esc_url( $install_acf_url ) );
 	}
 }
 
