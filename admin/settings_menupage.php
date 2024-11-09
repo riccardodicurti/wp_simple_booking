@@ -203,8 +203,8 @@ class WordPressSimpleBooking {
             "CustomBoxShadowColorHover": "#ffffff",
             "CustomIntentSelectionColor": "#9f8b3e",
             "CustomIntentSelectionDaysBGColor": "#9f8b3e",
-            "CustomButtonHoverBGColor": "#676767",
-            "CustomLabelHoverColor": "#9f8b3e",
+            "CustomButtonHoverBGColor": "#9f8b3e",
+            "CustomLabelHoverColor": "#676767",
             "CustomButtonBGColor": "#9f8b3e",
             "CustomIconColor": "#9f8b3e",
             "CustomLinkColor": "#9f8b3e",
@@ -219,11 +219,11 @@ class WordPressSimpleBooking {
         }
 EOT;
 
-		$js_bar_settings = isset( $this->wordpress_simple_booking_options['js_bar_settings'] ) ? esc_attr( $this->wordpress_simple_booking_options['js_bar_settings'] ) : esc_attr( $placeholder ); 
+		$js_bar_settings = isset( $this->wordpress_simple_booking_options['js_bar_settings'] ) && $this->wordpress_simple_booking_options['js_bar_settings'] ? esc_attr( $this->wordpress_simple_booking_options['js_bar_settings'] ) : esc_attr( $placeholder ); 
 
 		printf(
 			'<textarea class="regular-text" type="text" name="wordpress_simple_booking_option_name[js_bar_settings]" id="js_bar_settings" rows="4" cols="50">%s</textarea>',
-			esc_attr( $js_bar_settings ) ?: esc_attr( $placeholder )
+			esc_attr( $js_bar_settings )
 		);
 	}
 }

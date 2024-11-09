@@ -33,10 +33,10 @@ $j(document).ready(function () {
             CodLang: options.language_code,
             Styles: colorPalette,
         });
-    
+        
         var button = document.getElementById("sb-button");
-    
-        button.style.setProperty( '--sb-primary', colorPalette.CustomButtonBGColor );
+        button.style.setProperty( '--sb-primary', colorPalette.CustomButtonBGColor);
+        button.style.setProperty( '--sb-secondary', colorPalette.CustomColor );
     
         button.onclick = function () {
             var class_sb = document.getElementsByClassName("sb");
