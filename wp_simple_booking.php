@@ -39,11 +39,11 @@ function wp_simple_booking_get_dependencies() {
 
 	$wordpress_simple_booking_options = get_option( 'wordpress_simple_booking_option_name' );
 
-	$options['mobile_theme_version'] = $wordpress_simple_booking_options['mobile_theme_version'];
-	$options['license_code'] = apply_filters( 'wp_simple_booking/wp_simple_booking_get_dependencies/default_license_code_0', $wordpress_simple_booking_options['default_license_code_0'] );
-	$options['availability_locale'] = $wordpress_simple_booking_options['default_availability_locale_1'];
-	$options['language_code'] = $wordpress_simple_booking_options['default_language_code_2'];
-	$options['js_bar_settings'] = $wordpress_simple_booking_options['js_bar_settings'];
+	$options['mobile_theme_version'] = $wordpress_simple_booking_options['mobile_theme_version'] ?? '';
+	$options['license_code'] = apply_filters( 'wp_simple_booking/wp_simple_booking_get_dependencies/default_license_code_0', $wordpress_simple_booking_options['default_license_code_0'] ?? '' );
+	$options['availability_locale'] = $wordpress_simple_booking_options['default_availability_locale_1'] ?? '';
+	$options['language_code'] = $wordpress_simple_booking_options['default_language_code_2'] ?? '';
+	$options['js_bar_settings'] = $wordpress_simple_booking_options['js_bar_settings'] ?? '';
 
 	if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
 		$options['language_code'] = strtoupper( defined( 'ICL_LANGUAGE_CODE' ) );
