@@ -72,7 +72,7 @@ function wp_simple_booking_enqueue_dependencies() {
 
 	if ( $options['license_code'] != '0000' ) {
 		wp_enqueue_style( 'wp_simple_booking_style', plugin_dir_url( __FILE__ ) . 'public/css/simple_booking_style.css', [] , $plugin_data['Version'] );
-		wp_register_script( 'wp_simple_booking_scripts', plugin_dir_url( __FILE__ ) . 'public/js/simplebooking.js', [ 'jquery' ], false, true );
+		wp_register_script( 'wp_simple_booking_scripts', plugin_dir_url( __FILE__ ) . 'public/js/simplebooking.js', [ 'jquery' ], $plugin_data['Version'], [ 'strategy'  => 'defer', 'in_footer' => true ] );
 
 		wp_localize_script( 'wp_simple_booking_scripts', 'options', $options );
 		wp_enqueue_script( 'wp_simple_booking_scripts' );
