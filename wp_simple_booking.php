@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin Name:       Simple Booking
+ * Plugin Name:       Simple Booking for WordPress
  * Plugin URI:        https://github.com/riccardodicurti/wp_simple_booking
- * Description:       Simple Booking is a plugin to simply add Simple Booking bar to your WordPress site
+ * Description:       Simple Booking for WordPress is a plugin to simply add Simple Booking bar to your site
  * Version:           1.4
  * Author:            Riccardo Di Curti
  * Author URI:        https://riccardodicurti.it/
