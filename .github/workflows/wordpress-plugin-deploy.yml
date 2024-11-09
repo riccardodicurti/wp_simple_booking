@@ -13,6 +13,7 @@ jobs:
     - name: WordPress Plugin Deploy
       id: deploy
       uses: 10up/action-wordpress-plugin-deploy@stable
+      continue-on-error: true
       with:
         generate-zip: true
       env:
