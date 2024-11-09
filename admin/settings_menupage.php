@@ -158,7 +158,7 @@ class WordPressSimpleBooking {
 
 		printf(
 			'<input class="regular-text" type="text" name="wordpress_simple_booking_option_name[default_license_code_0]" id="default_license_code_0" value="%s">',
-			isset( $this->wordpress_simple_booking_options['default_license_code_0'] ) ? esc_attr( $this->wordpress_simple_booking_options['default_license_code_0'] ) : $placeholder
+			isset( $this->wordpress_simple_booking_options['default_license_code_0'] ) ? esc_attr( $this->wordpress_simple_booking_options['default_license_code_0'] ) : esc_attr( $placeholder )
 		);
 	}
 
@@ -167,7 +167,7 @@ class WordPressSimpleBooking {
 
 		printf(
 			'<input class="regular-text" type="text" name="wordpress_simple_booking_option_name[request_page_id]" id="request_page_id" value="%s">',
-			isset( $this->wordpress_simple_booking_options['request_page_id'] ) ? esc_attr( $this->wordpress_simple_booking_options['request_page_id'] ) : $placeholder
+			isset( $this->wordpress_simple_booking_options['request_page_id'] ) ? esc_attr( $this->wordpress_simple_booking_options['request_page_id'] ) : esc_attr( $placeholder )
 		);
 	}
 
@@ -176,7 +176,7 @@ class WordPressSimpleBooking {
 
 		printf(
 			'<input class="regular-text" type="text" name="wordpress_simple_booking_option_name[default_availability_locale_1]" id="default_availability_locale_1" value="%s">',
-			isset( $this->wordpress_simple_booking_options['default_availability_locale_1'] ) ? esc_attr( $this->wordpress_simple_booking_options['default_availability_locale_1'] ) : $placeholder
+			isset( $this->wordpress_simple_booking_options['default_availability_locale_1'] ) ? esc_attr( $this->wordpress_simple_booking_options['default_availability_locale_1'] ) : esc_attr( $placeholder )
 		);
 	}
 
@@ -185,7 +185,7 @@ class WordPressSimpleBooking {
 
 		printf(
 			'<input class="regular-text" type="text" name="wordpress_simple_booking_option_name[default_language_code_2]" id="default_language_code_2" value="%s">',
-			isset( $this->wordpress_simple_booking_options['default_language_code_2'] ) ? esc_attr( $this->wordpress_simple_booking_options['default_language_code_2'] ) : $placeholder
+			isset( $this->wordpress_simple_booking_options['default_language_code_2'] ) ? esc_attr( $this->wordpress_simple_booking_options['default_language_code_2'] ) : esc_attr( $placeholder )
 		);
 	}
 
@@ -219,11 +219,11 @@ class WordPressSimpleBooking {
         }
 EOT;
 
-		$js_bar_settings = isset( $this->wordpress_simple_booking_options['js_bar_settings'] ) ? esc_attr( $this->wordpress_simple_booking_options['js_bar_settings'] ) : $placeholder; 
+		$js_bar_settings = isset( $this->wordpress_simple_booking_options['js_bar_settings'] ) ? esc_attr( $this->wordpress_simple_booking_options['js_bar_settings'] ) : esc_attr( $placeholder ); 
 
 		printf(
 			'<textarea class="regular-text" type="text" name="wordpress_simple_booking_option_name[js_bar_settings]" id="js_bar_settings" rows="4" cols="50">%s</textarea>',
-			$js_bar_settings ?: $placeholder
+			esc_attr( $js_bar_settings ) ?: esc_attr( $placeholder )
 		);
 	}
 }
