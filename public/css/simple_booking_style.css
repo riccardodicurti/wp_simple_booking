@@ -1,7 +1,11 @@
-
-/* save the footer */
 body {
-    margin-bottom: 89px;
+    margin-bottom: 44px;
+}
+
+@media only screen and (min-width: 1000px) {
+    body {
+        margin-bottom: 89px;
+    }
 }
 
 #sb-button {
