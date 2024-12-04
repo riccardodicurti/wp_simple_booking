@@ -4,7 +4,7 @@ $j(document).ready(function () {
 
     if ( options.mobile_theme_version == 0 ) {
         $j("body").append(
-            '<div id="sb-button"><div class="sb-button-div"><span class="sb-button-span"> ' + options.availability_locale + ' </span><span class="sb-button-arrow"></span></div></div><div class="sb-body"><div id="sb-container" style="display:none;"></div></div>'
+            '<div class="sb-button__theme_' + options.mobile_theme_version + '" id="sb-button"><div class="sb-buttons"><a href="' + options.richiedi_url + '"> ' + options.richiedi_label + ' </a><a href="' + options.prenota_url + '"> ' + options.prenota_label + ' </a></div><div class="sb-button-div"><span class="sb-button-span"> ' + options.availability_locale + ' </span><span class="sb-button-arrow"></span></div></div><div class="sb-body"><div id="sb-container" style="display:none;"></div></div>'
         );
     
         (function (i, s, o, g, r, a, m) {
