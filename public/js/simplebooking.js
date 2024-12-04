@@ -2,7 +2,7 @@ var $j = jQuery;
 
 $j(document).ready(function () {
 
-    if ( options.mobile_theme_version == 0 ) {
+    if ( options.mobile_theme_version != 1 ) {
         $j("body").append(
             '<div class="sb-button__theme_' + options.mobile_theme_version + '" id="sb-button"><div class="sb-buttons"><a href="' + options.richiedi_url + '"> ' + options.richiedi_label + ' </a><a href="' + options.prenota_url + '"> ' + options.prenota_label + ' </a></div><div class="sb-button-div"><span class="sb-button-span"> ' + options.availability_locale + ' </span><span class="sb-button-arrow"></span></div></div><div class="sb-body"><div id="sb-container" style="display:none;"></div></div>'
         );
@@ -28,15 +28,14 @@ $j(document).ready(function () {
         );
     
         var colorPalette = JSON.parse( options.js_bar_settings );
-    
+
         SBSyncroBox({
             CodLang: options.language_code,
             Styles: colorPalette,
         });
-        
+    
         var button = document.getElementById("sb-button");
-        button.style.setProperty( '--sb-primary', colorPalette.CustomButtonBGColor);
-        button.style.setProperty( '--sb-secondary', colorPalette.CustomColor );
+        button.style.setProperty( '--sb-primary', colorPalette.CustomButtonBGColor );
     
         button.onclick = function () {
             var class_sb = document.getElementsByClassName("sb");
@@ -53,12 +52,6 @@ $j(document).ready(function () {
                 id_sb_container.style.display = "none";
             }
         };
-    }
-
-    if ( options.mobile_theme_version == 2 ) {
-        $j("body").append(
-            '<div class="sb-button__theme_2" id="sb-button"><a href="' + options.richiedi_url + '" class="sb-button-div"> ' + options.richiedi_label + ' </a><a href="' + options.prenota_url + '" class="sb-button-div"> ' + options.prenota_label + ' </a></div>'
-        );
     }
 });
   
