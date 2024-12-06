@@ -4,7 +4,7 @@
 
 /dist/index.html
 /dist/init.js.map
-/dist/wp_simple_booking*
+/dist/style.css.map
 
 .distignore
 .parcelrc
@@ -14,5 +14,7 @@
 
 index.html
 README.md
+readme.txt
+
 package.json
-package.lock
+package-lock.json
