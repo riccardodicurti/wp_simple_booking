@@ -4,8 +4,6 @@ body {
 }
 
 #sb-button {
-    display: none;
-
     --sb-primary: #877542;
     --sb-secondary: #000000;
 }
@@ -121,7 +119,7 @@ body {
     width: calc(50% - 11px) !important;
 }
 
-@media only screen and (min-width: 1215px) {
+@media only screen and (min-width: 1024px) {
     #sb-container {
         display: block !important;
     }
@@ -151,7 +149,7 @@ body {
     }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1024px) {
     #rpb {
         padding: 5px 5px !important;
     }
@@ -224,27 +222,30 @@ body {
 
 /* Version 2 */
 
-.sb-button__theme_2 .sb-buttons {
-    display: none;
-}
-
-.sb-button__theme_2 .sb-button-div {
-    display: none;
-}
-
-@media only screen and (max-width: 1000px) {
-    .sb-button__theme_2 .sb-buttons {
-        display: flex;
+#sb-button {
+    .sb-buttons, .sb-button-div {
+        display: none;
     }
 
-    .sb-button__theme_2 .sb-buttons a {
-        width: 50%;
-        text-align: center;
-        line-height: 44px;
-        color: rgba(256, 256, 256, 1);
-    }
+    @media only screen and (max-width: 1024px) {
+        &.sb-button__theme_2 .sb-buttons {
+            display: flex;
+        }
+    
+        &.sb-button__theme_2 .sb-buttons a {
+            width: 50%;
+            text-align: center;
+            line-height: 44px;
+            color: rgba(256, 256, 256, 1);
+        }
+    
+        &.sb-button__theme_2 .sb-buttons a:first-child {
+            border-right: 1px solid rgba(256, 256, 256, 0.4);
+        }
 
-    .sb-button__theme_2 .sb-buttons a:first-child {
-        border-right: 1px solid rgba(256, 256, 256, 0.4);
+        &.sb-button__theme_0 .sb-button-div {
+            display: block;
+
+        }
     }
 }

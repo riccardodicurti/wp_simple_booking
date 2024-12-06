@@ -4,7 +4,7 @@
  * Plugin Name:       Simple Booking for WordPress
  * Plugin URI:        https://github.com/riccardodicurti/wp_simple_booking
  * Description:       Simple Booking for WordPress is a plugin to simply add Simple Booking bar to your site
- * Version:           1.5
+ * Version:           1.6
  * Author:            Riccardo Di Curti
  * Author URI:        https://riccardodicurti.it/
  * License:           GPL-2.0+
@@ -72,8 +72,8 @@ function wp_simple_booking_enqueue_dependencies() {
 	$plugin_data = get_plugin_data(  __FILE__ ); 
 
 	if ( $options['license_code'] != '0000' ) {
-		wp_enqueue_style( 'wp_simple_booking_style', plugin_dir_url( __FILE__ ) . 'public/css/simple_booking_style.css', [] , $plugin_data['Version'] );
-		wp_register_script( 'wp_simple_booking_scripts', plugin_dir_url( __FILE__ ) . 'public/js/simplebooking.js', $plugin_data['Version'], [ 'strategy'  => 'defer', 'in_footer' => true ] );
+		wp_enqueue_style( 'wp_simple_booking_style', plugin_dir_url( __FILE__ ) . 'dist/style.css', [] , $plugin_data['Version'] );
+		wp_register_script( 'wp_simple_booking_scripts', plugin_dir_url( __FILE__ ) . 'public/js/init.js', $plugin_data['Version'], [ 'strategy'  => 'defer', 'in_footer' => true ] );
 
 		wp_localize_script( 'wp_simple_booking_scripts', 'options', $options );
 		wp_enqueue_script( 'wp_simple_booking_scripts' );
@@ -108,4 +108,6 @@ function wp_simple_booking_init() {
 	}
 }
 
-add_action( 'init', 'wp_simple_booking_init' );
+if (! class_exists( 'WordPressSimpleBooking' ) ) {
+	add_action( 'init', 'wp_simple_booking_init' );
+}
