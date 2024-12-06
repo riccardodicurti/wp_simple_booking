@@ -2,7 +2,17 @@
 /.github
 /node_modules
 
+/dist/index.html
+/dist/init.js.map
+/dist/wp_simple_booking*
+
 .distignore
+.parcelrc
 .gitignore
 .gitattributes
 .gitkeep
+
+index.html
+README.md
+package.json
+package.lock
