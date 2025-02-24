@@ -4,7 +4,7 @@
  * Plugin Name:       Simple Booking for WordPress
  * Plugin URI:        https://github.com/riccardodicurti/wp_simple_booking
  * Description:       Simple Booking for WordPress is a plugin to simply add Simple Booking bar to your site
- * Version:           1.6.1
+ * Version:           1.6.3.1
  * Author:            Riccardo Di Curti
  * Author URI:        https://riccardodicurti.it/
  * License:           GPL-2.0+
@@ -40,6 +40,11 @@ function wp_simple_booking_get_dependencies() {
 
 	$wordpress_simple_booking_options = get_option( 'wordpress_simple_booking_option_name' );
 
+	$options['desktop_theme_version'] = $wordpress_simple_booking_options['desktop_theme_version'] ?? '';
+
+	$options['icon_title_1'] = $wordpress_simple_booking_options['icon_title_1'] ?? '';
+	$options['icon_title_2'] = $wordpress_simple_booking_options['icon_title_2'] ?? '';
+
 	$options['mobile_theme_version'] = $wordpress_simple_booking_options['mobile_theme_version'] ?? '';
 	$options['license_code'] = apply_filters( 'wp_simple_booking/wp_simple_booking_get_dependencies/default_license_code_0', $wordpress_simple_booking_options['default_license_code_0'] ?? '0000' );
 	$options['availability_locale'] = $wordpress_simple_booking_options['default_availability_locale_1'] ?? '';
@@ -68,15 +73,23 @@ function wp_simple_booking_get_dependencies() {
 }
 
 function wp_simple_booking_enqueue_dependencies() {
+	global $post;
 	$options = wp_simple_booking_get_dependencies();
-	$plugin_data = get_plugin_data(  __FILE__ ); 
+	$plugin_data = get_plugin_data(__FILE__); 
 
-	if ( $options['license_code'] != '0000' ) {
-		wp_enqueue_style( 'wp_simple_booking_style', plugin_dir_url( __FILE__ ) . 'dist/style.css', [] , $plugin_data['Version'] );
-		wp_register_script( 'wp_simple_booking_scripts', plugin_dir_url( __FILE__ ) . 'public/js/init.js', ['jquery'], $plugin_data['Version'], [ 'strategy'  => 'defer', 'in_footer' => true ] );
+	if ($options['license_code'] != '0000') {
+		wp_enqueue_style('wp_simple_booking_style', plugin_dir_url(__FILE__) . 'dist/style.css', [], $plugin_data['Version']);
+		
+		// Verifica la presenza dello shortcode [wsb_form] nel contenuto
+		if (! has_shortcode($post->post_content, 'wsb_form')) {
+			wp_register_script('wp_simple_booking_scripts', plugin_dir_url(__FILE__) . 'public/js/init.js', ['jquery'], $plugin_data['Version'], [
+				'strategy' => 'defer',
+				'in_footer' => true
+			]);
 
-		wp_localize_script( 'wp_simple_booking_scripts', 'options', $options );
-		wp_enqueue_script( 'wp_simple_booking_scripts' );
+			wp_localize_script('wp_simple_booking_scripts', 'options', $options);
+			wp_enqueue_script('wp_simple_booking_scripts');
+		}
 	}
 }
 
