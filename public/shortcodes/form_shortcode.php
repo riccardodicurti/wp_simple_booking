@@ -13,7 +13,7 @@ function create_wp_simple_booking_form( $atts = [], $content = null, $tag = '' )
 
     ob_start();
     
-    echo '<div id="sb-converto-container-s"></div>';
+    echo '<div id="sb-form-converto-container-s"></div>';
     echo '<script type="text/javascript">';
         echo '(function (i, s, o, g, r, a, m) {';
             echo 'i[\'SBSyncroBoxParam\'] = r; i[r] = i[r] || function () {';
@@ -25,7 +25,7 @@ function create_wp_simple_booking_form( $atts = [], $content = null, $tag = '' )
         echo 'SBSyncroBox({';
             echo "CodLang: '" . esc_attr( $options['language_code'] ) . "',";
             echo 'Reference: "sbSyncroBox",';
-            echo "MainContainerId: 'sb-converto-container-s',";
+            echo "MainContainerId: 'sb-form-converto-container-s,";
             echo "Styles: " . wp_json_encode( $options['js_bar_settings'], JSON_UNESCAPED_UNICODE ) . ",";
             echo "Converto: {";
                 echo 'InPageContainerId: "sb-converto-container-s",';
