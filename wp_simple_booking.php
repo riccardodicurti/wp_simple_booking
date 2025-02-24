@@ -82,6 +82,12 @@ function wp_simple_booking_enqueue_dependencies() {
 		
 		// Verifica la presenza dello shortcode [wsb_form] nel contenuto
 		if (! has_shortcode($post->post_content, 'wsb_form')) {
+			// Aggiungi classe al body
+			add_filter('body_class', function($classes) {
+				$classes[] = 'has-booking-bar';
+				return $classes;
+			});
+
 			wp_register_script('wp_simple_booking_scripts', plugin_dir_url(__FILE__) . 'public/js/init.js', ['jquery'], $plugin_data['Version'], [
 				'strategy' => 'defer',
 				'in_footer' => true
