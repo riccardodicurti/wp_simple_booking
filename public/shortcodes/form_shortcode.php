@@ -25,10 +25,10 @@ function create_wp_simple_booking_form( $atts = [], $content = null, $tag = '' )
         echo 'SBSyncroBox({';
             echo "CodLang: '" . esc_attr( $options['language_code'] ) . "',";
             echo 'Reference: "sbSyncroBox",';
-            echo "MainContainerId: 'sb-form-converto-container-s,";
+            echo "MainContainerId: 'sb-form-converto-container-s',";
             echo "Styles: " . wp_json_encode( $options['js_bar_settings'], JSON_UNESCAPED_UNICODE ) . ",";
             echo "Converto: {";
-                echo 'InPageContainerId: "sb-converto-container-s",';
+                echo 'InPageContainerId: "sb-form-converto-container-s",';
                 echo "ThankYouPage: '" . esc_url( $options['thank_you_page'] ) . "',";
                 echo "FormName: '" . esc_attr( $options['form_name'] ) . "'";
             echo "}";
