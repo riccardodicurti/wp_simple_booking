@@ -1,0 +1,23 @@
+{
+  "name": "wp_simple_booking",
+  "version": "1.0.0",
+  "description": "",
+  "source": "index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "build": "parcel build index.html",
+    "dev": "parcel watch index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/config-default": "latest",
+    "@parcel/transformer-sass": "^2.12.0",
+    "parcel": "latest",
+    "parcel-namer-custom": "latest"
+  },
+  "parcel-namer-custom": {
+    ".css$": "[name].[type]",
+    ".js$": "[name].[type]"
+  }
+}
