@@ -6,10 +6,30 @@
 class WordPressSimpleBooking {
 	private $wordpress_simple_booking_options;
 
-	public function __construct() {
-		add_action( 'admin_menu', [ $this, 'wordpress_simple_booking_add_plugin_page' ] );
-		add_action( 'admin_init', [ $this, 'wordpress_simple_booking_page_init' ] );
-	}
+    public function __construct() {
+        add_action('admin_menu', [$this, 'wordpress_simple_booking_add_plugin_page']);
+        add_action('admin_init', [$this, 'wordpress_simple_booking_page_init']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
+    }
+
+    public function enqueue_admin_scripts() {
+        wp_enqueue_script('jquery');
+        wp_add_inline_script('jquery', '
+            jQuery(document).ready(function($) {
+                function toggleIconTitleFields() {
+                    var desktopTheme = $("#desktop_theme_version").val();
+                    if (desktopTheme === "1") {
+                        $(".icon-title-field").show();
+                    } else {
+                        $(".icon-title-field").hide();
+                    }
+                }
+                
+                $("#desktop_theme_version").on("change", toggleIconTitleFields);
+                toggleIconTitleFields();
+            });
+        ');
+    }
 
 	public function wordpress_simple_booking_add_plugin_page() {
 		add_menu_page(
@@ -53,6 +73,32 @@ class WordPressSimpleBooking {
 			'Settings', // title
 			[ $this, 'wordpress_simple_booking_section_info' ], // callback
 			'wordpress-simple-booking-admin' // page
+		);
+
+		// Add new Desktop theme version field
+		add_settings_field(
+			'desktop_theme_version',
+			'Desktop theme version',
+			[$this, 'desktop_theme_version_callback'],
+			'wordpress-simple-booking-admin',
+			'wordpress_simple_booking_setting_section'
+		);
+
+		// Add new Icon Title fields
+		add_settings_field(
+			'icon_title_1',
+			'Icon',
+			[$this, 'icon_title_1_callback'],
+			'wordpress-simple-booking-admin',
+			'wordpress_simple_booking_setting_section'
+		);
+
+		add_settings_field(
+			'icon_title_2',
+			'Title',
+			[$this, 'icon_title_2_callback'],
+			'wordpress-simple-booking-admin',
+			'wordpress_simple_booking_setting_section'
 		);
 
 		add_settings_field(
@@ -107,6 +153,18 @@ class WordPressSimpleBooking {
 	public function wordpress_simple_booking_sanitize( $input ) {
 		$sanitary_values = [];
 
+		if (isset($input['desktop_theme_version'])) {
+            $sanitary_values['desktop_theme_version'] = sanitize_text_field($input['desktop_theme_version']);
+        }
+
+        if (isset($input['icon_title_1'])) {
+            $sanitary_values['icon_title_1'] = $input['icon_title_1'];
+        }
+
+        if (isset($input['icon_title_2'])) {
+            $sanitary_values['icon_title_2'] = sanitize_text_field($input['icon_title_2']);
+        }
+
 		if ( isset( $input['mobile_theme_version'] ) ) {
 			$sanitary_values['mobile_theme_version'] = sanitize_text_field( $input['mobile_theme_version'] );
 		}
@@ -136,6 +194,43 @@ class WordPressSimpleBooking {
 
 	public function wordpress_simple_booking_section_info() {
 	}
+
+	public function desktop_theme_version_callback() {
+        $options = [
+            '0' => __('Classic', 'wp_simple_booking'),
+            '1' => __('Float', 'wp_simple_booking'),
+        ];
+
+        $placeholder = isset($this->wordpress_simple_booking_options['desktop_theme_version']) 
+            ? esc_attr($this->wordpress_simple_booking_options['desktop_theme_version']) 
+            : '0';
+
+        echo "<select name='wordpress_simple_booking_option_name[desktop_theme_version]' id='desktop_theme_version'>";
+        foreach($options as $key => $value) {
+            echo '<option value="' . esc_attr($key) . '" ' . 
+                 ($key == $placeholder ? 'selected' : '') . '>' . 
+                 esc_html($value) . '</option>';
+        }
+        echo '</select>';
+    }
+
+    public function icon_title_1_callback() {
+        printf(
+            '<input class="regular-text icon-title-field" type="text" name="wordpress_simple_booking_option_name[icon_title_1]" id="icon_title_1" value="%s">',
+            isset($this->wordpress_simple_booking_options['icon_title_1']) 
+                ? esc_attr($this->wordpress_simple_booking_options['icon_title_1']) 
+                : ''
+        );
+    }
+
+    public function icon_title_2_callback() {
+        printf(
+            '<input class="regular-text icon-title-field" type="text" name="wordpress_simple_booking_option_name[icon_title_2]" id="icon_title_2" value="%s">',
+            isset($this->wordpress_simple_booking_options['icon_title_2']) 
+                ? esc_attr($this->wordpress_simple_booking_options['icon_title_2']) 
+                : ''
+        );
+    }
 
 	public function mobile_theme_version_callback() {;
 		$options = [
