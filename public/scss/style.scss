@@ -124,24 +124,22 @@ body.has-booking-bar {
         display: block !important;
     }
 
-    .sb-screen-m .sb__guests-rooms {
-        width: 24% !important;
-    }
-
+    .sb-screen-m .sb__guests-rooms,
     .sb-screen-l .sb__btn--verify {
-        width: 24% !important;
+        width: calc( 25% - 16px ) !important;
+        padding: 0 !important;
     }
 
     #sb-container_sb__form-field--checkavailability {
-        margin-left: 16px;
+        margin-left: 10px;
     }
 
     #sb-container_sb-container_sb__form-field--checkin {
-        margin-right: 22px;
+        margin-right: 10px;
     }
 
     #sb-container_sb__form-field--checkin {
-        margin-right: 22px;
+        margin-right: 10px;
     }
 
     #sb-container_sb__form {
@@ -245,7 +243,6 @@ body.has-booking-bar {
 
         &.sb-button__theme_0 .sb-button-div {
             display: block;
-
         }
     }
 }
@@ -315,7 +312,7 @@ body.has-booking-bar {
 @media only screen and (min-width: 1550px) {
     .sb-button__desktop_theme_1-wrap .sb-body {
         .sb-screen-m .sb__guests-rooms, .sb-screen-l .sb__btn--verify {
-            width: 24% !important;
+            width: calc( 24% - 16px ) !important;
         }
     }
 }
@@ -326,3 +323,11 @@ body.has-booking-bar {
         right: 10%;
     }
 }
+
+// Start cleanup og 2.0 version 
+
+// 736 togliere barra alta e va su due righe 
+@media only screen and (min-width: 736px) {
+}
+
+// 1025 diventa desktop 

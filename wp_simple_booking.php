@@ -88,7 +88,7 @@ function wp_simple_booking_enqueue_dependencies() {
 				return $classes;
 			});
 
-			wp_register_script('wp_simple_booking_scripts', plugin_dir_url(__FILE__) . 'public/js/init.js', ['jquery'], $plugin_data['Version'], [
+			wp_register_script('wp_simple_booking_scripts', plugin_dir_url(__FILE__) . 'dist/init.js', ['jquery'], $plugin_data['Version'], [
 				'strategy' => 'defer',
 				'in_footer' => true
 			]);
