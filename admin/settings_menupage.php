@@ -230,6 +230,9 @@ class WordPressSimpleBooking {
                 ? esc_attr($this->wordpress_simple_booking_options['icon_title_2']) 
                 : ''
         );
+        if (function_exists('icl_register_string')) {
+            icl_register_string('wp_simple_booking', 'icon_title_2', $this->wordpress_simple_booking_options['icon_title_2']);
+        }
     }
 
 	public function mobile_theme_version_callback() {;
@@ -273,6 +276,9 @@ class WordPressSimpleBooking {
 			'<input class="regular-text" type="text" name="wordpress_simple_booking_option_name[default_availability_locale_1]" id="default_availability_locale_1" value="%s">',
 			isset( $this->wordpress_simple_booking_options['default_availability_locale_1'] ) ? esc_attr( $this->wordpress_simple_booking_options['default_availability_locale_1'] ) : esc_attr( $placeholder )
 		);
+		if (function_exists('icl_register_string')) {
+			icl_register_string('wp_simple_booking', 'default_availability_locale_1', $this->wordpress_simple_booking_options['default_availability_locale_1']);
+		}
 	}
 
 	public function default_language_code_2_callback() {
