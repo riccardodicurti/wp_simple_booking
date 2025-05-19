@@ -70,10 +70,10 @@ function wp_simple_booking_get_dependencies() {
 	$options['richiedi_label'] = __( 'Richiedi', 'wp_simple_booking' );
 
 	// Per icon_title_2
-	$translated_icon_title = apply_filters('wpml_translate_single_string', $options['icon_title_2'], 'wp_simple_booking', 'icon_title_2');
+	$options['icon_title_2'] = apply_filters('wpml_translate_single_string', $options['icon_title_2'], 'wp_simple_booking', 'icon_title_2');
 
 	// Per default_availability_locale_1
-	$translated_availability = apply_filters('wpml_translate_single_string', $options['availability_locale'], 'wp_simple_booking', 'default_availability_locale_1');
+	$options['availability_locale'] = apply_filters('wpml_translate_single_string', $options['availability_locale'], 'wp_simple_booking', 'default_availability_locale_1');
 
 	return $options;
 }
