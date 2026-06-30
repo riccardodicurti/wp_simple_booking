@@ -316,7 +316,8 @@ class WordPressSimpleBooking {
             "CustomFieldBackgroundColor": "#ffffff",
             "CustomWidgetBGColor": "#ffffff",
             "CustomSelectedDaysColor": "#676767",
-            "CustomCalendarBackgroundColor": "#ffffff"
+            "CustomCalendarBackgroundColor": "#ffffff",
+			"CustomButtonColor": "#ffffff"
         }
 EOT;
 
