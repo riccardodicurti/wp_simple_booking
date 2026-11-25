@@ -44,20 +44,53 @@ $j(document).ready(function () {
         var button = document.getElementById("sb-button");
         button.style.setProperty( '--sb-primary', colorPalette.CustomButtonBGColor );
     
+        var container = document.getElementById("sb-container");
+
+        // Aggiorna le variabili CSS usate per lo spazio in fondo alla pagina
+        // e per appoggiare la barra di chiusura sopra il form aperto (mobile).
+        var updateBarHeight = function () {
+            var formHeight = container.offsetHeight;
+            var buttonStyle = window.getComputedStyle(button);
+            var barHeight = 0;
+
+            if (buttonStyle.position === "fixed") {
+                // mobile: conta il pulsante chiuso, non la barra di chiusura
+                if (!button.classList.contains("collapse")) {
+                    barHeight = button.offsetHeight;
+                }
+            } else if (window.getComputedStyle(container).position === "fixed") {
+                // tablet e desktop: la barra fissa e' il form stesso
+                barHeight = formHeight;
+            }
+
+            button.style.setProperty("--sb-form-height", formHeight + "px");
+
+            if (barHeight > 0) {
+                document.body.style.setProperty("--sb-bar-height", barHeight + "px");
+            }
+        };
+
+        if (window.ResizeObserver) {
+            new ResizeObserver(updateBarHeight).observe(container);
+        }
+        $j(window).on("resize", updateBarHeight);
+        setTimeout(updateBarHeight, 1000);
+
         button.onclick = function () {
             var class_sb = document.getElementsByClassName("sb");
-            class_sb[0].classList.add("sb-screen-xs");
-            var id_sb_button = document.getElementById("sb-button");
-            var id_sb_container = document.getElementById("sb-container");
-            if (id_sb_container.style.display == "none") {
-                id_sb_button.classList.add("collapse");
-                id_sb_button.style.display = "";
-                id_sb_container.style.display = "block";
-            } else {
-                id_sb_button.classList.remove("collapse");
-                id_sb_button.style.display = "";
-                id_sb_container.style.display = "none";
+            if (class_sb[0]) {
+                class_sb[0].classList.add("sb-screen-xs");
             }
+            if (container.style.display == "none") {
+                button.classList.add("collapse");
+                button.style.display = "";
+                container.style.display = "block";
+            } else {
+                button.classList.remove("collapse");
+                button.style.display = "";
+                container.style.display = "none";
+            }
+            updateBarHeight();
         };
     }
 });
