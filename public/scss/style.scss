@@ -1,6 +1,6 @@
 /* save the footer */
 body.has-booking-bar {
-    margin-bottom: 89px;
+    margin-bottom: var(--sb-bar-height, 89px);
 }
 
 #sb-button {
@@ -105,15 +105,6 @@ body.has-booking-bar {
     }
 }
 
-@keyframes slide-up-two {
-    from {
-        bottom: -70px;
-    }
-    to {
-        bottom: 230px;
-    }
-}
-
 .sb-screen-m .sb__dates {
     width: calc(50%) !important;
 }
@@ -128,6 +119,7 @@ body.has-booking-bar {
     }
 
     .sb-screen-m .sb__guests-rooms,
+    .sb-screen-m .sb__btn--verify,
     .sb-screen-l .sb__btn--verify {
         width: calc( 25% - 16px ) !important;
         padding: 0 !important;
@@ -147,6 +139,18 @@ body.has-booking-bar {
 
     #sb-container_sb__form {
         margin-left: 10px;
+    }
+}
+
+/* tablet: data, persone e pulsante sulla stessa riga */
+@media only screen and (min-width: 721px) and (max-width: 1023px) {
+    #sb-container .sb-screen-m .sb__btn--verify {
+        width: auto !important;
+        flex: 1 1 0;
+        min-width: 0;
+        letter-spacing: 0;
+        font-size: 12px;
+        white-space: normal;
     }
 }
 
@@ -175,20 +179,34 @@ body.has-booking-bar {
         line-height: 44px;
     }
 
-    #sb-button.collapse {
-        bottom: 230px;
-        height: 20px;
-        animation: 2s slide-up-two;
-        animation-timing-function: linear;
+    /* il form si apre dal basso in modo rapido */
+    #sb-container {
+        animation-duration: 0.3s;
+        animation-timing-function: ease-out;
     }
 
-    #sb-button.collapse .sb-button-arrow {
-        font-size: 18px !important;
-        top: -2px;
+    /* barra di chiusura appoggiata sopra il form (altezza impostata da JS) */
+    #sb-button.collapse {
+        bottom: var(--sb-form-height, 156px);
+        height: 32px;
+        animation: none;
+        cursor: pointer;
+    }
+
+    #sb-button.collapse .sb-button-div {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
     }
 
     #sb-button.collapse .sb-button-arrow::before {
         content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid #ffffff;
+        border-bottom: 2px solid #ffffff;
+        transform: translateY(-3px) rotate(45deg);
     }
 
     #sb-button.collapse .sb-button-span {
@@ -228,7 +246,8 @@ body.has-booking-bar {
         display: none;
     }
 
-    @media only screen and (max-width: 1024px) {
+    /* il pulsante fisso esiste solo su mobile: su tablet non deve comparire in fondo alla pagina */
+    @media only screen and (max-width: 720px) {
         &.sb-button__theme_2 .sb-buttons {
             display: flex;
         }
